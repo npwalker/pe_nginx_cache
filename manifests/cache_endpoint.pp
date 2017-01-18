@@ -15,31 +15,31 @@ define pe_nginx_cache::cache_endpoint (
     location_context => $endpoint,
   }
 
-  pe_nginx::directive { 'proxy_pass':
+  pe_nginx::directive { "${endpoint}-proxy_pass":
     value            => $proxy_pass,
   }
 
-  pe_nginx::directive { 'proxy_redirect':
+  pe_nginx::directive { "${endpoint}-proxy_redirect":
     value            => $proxy_redirect,
   }
 
-  pe_nginx::directive { 'proxy_cache_valid':
+  pe_nginx::directive { "${endpoint}-proxy_cache_valid":
     value            => $proxy_cache_valid,
   }
 
-  pe_nginx::directive { 'proxy_cache':
+  pe_nginx::directive { "${endpoint}-proxy_cache":
     value            => $proxy_cache,
   }
 
-  pe_nginx::directive { 'proxy_ignore_headers':
+  pe_nginx::directive { "${endpoint}-proxy_ignore_headers":
     value            => $proxy_ignore_headers,
   }
 
-  pe_nginx::directive { 'proxy_cache_lock':
+  pe_nginx::directive { "${endpoint}-proxy_cache_lock":
     value            => $proxy_cache_lock,
   }
 
-  pe_nginx::directive { 'add_header':
+  pe_nginx::directive { "${endpoint}-add_header":
     value            => $add_header,
   }
 }
