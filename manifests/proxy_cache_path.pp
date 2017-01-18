@@ -1,7 +1,7 @@
-define pe_nginx_cache::proxy_cache_path (
-  String $cache_name       = $title,
-  String $path             = "/opt/puppetlabs/var/cache/pe-nginx/${cache_name}",
+class pe_nginx_cache::proxy_cache_path (
+  String $path             = '/opt/puppetlabs/var/cache/pe-nginx',
   String $levels           = '1:2',
+  String $cache_name       = 'my_cache',
   String $size             = '100m',
   String $max_size         = '1000m',
   String $inactive         = '60m',
