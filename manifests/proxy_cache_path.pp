@@ -1,7 +1,7 @@
-class pe_nginx_cache::proxy_cache_path (
+define pe_nginx_cache::proxy_cache_path (
   String $path             = '/opt/puppetlabs/var/cache/pe-nginx',
   String $levels           = '1:2',
-  String $cache_name       = 'my_cache',
+  String $cache_name       = $title,
   String $size             = '100m',
   String $max_size         = '1000m',
   String $inactive         = '60m',
@@ -26,7 +26,7 @@ class pe_nginx_cache::proxy_cache_path (
   #So we place proxy_cache_path in its own file managed as a file resource to allow
   #working around the above two issues.
 
-  file { '/etc/puppetlabs/nginx/conf.d/cache.conf' :
+  file { "/etc/puppetlabs/nginx/conf.d/${cache_name}.conf" :
     ensure  => present,
     content => "proxy_cache_path ${path} levels=${levels} keys_zone=${cache_name}:${size} max_size=${max_size} inactive=${inactive} use_temp_path=${use_temp_path};",
     mode    => '0644',

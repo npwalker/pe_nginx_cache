@@ -1,5 +1,5 @@
-class pe_nginx_cache::cache_endpoint (
-  String $endpoint,
+define pe_nginx_cache::cache_endpoint (
+  String $endpoint             = $title,
   String $proxy_pass           = 'http://127.0.0.1:4430',
   String $proxy_redirect       = 'default',
   String $proxy_cache_valid    = '200 5m',
