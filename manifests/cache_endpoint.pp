@@ -16,37 +16,37 @@ define pe_nginx_cache::cache_endpoint (
   }
 
   pe_nginx::directive { "${endpoint}-proxy_pass":
-    directive_name   => 'proxy_pass',
-    value            => $proxy_pass,
+    directive_name => 'proxy_pass',
+    value          => $proxy_pass,
   }
 
   pe_nginx::directive { "${endpoint}-proxy_redirect":
-    directive_name   => 'proxy_redirect',
-    value            => $proxy_redirect,
+    directive_name => 'proxy_redirect',
+    value          => $proxy_redirect,
   }
 
   pe_nginx::directive { "${endpoint}-proxy_cache_valid":
-    directive_name   => 'proxy_cache_valid',
-    value            => $proxy_cache_valid,
+    directive_name => 'proxy_cache_valid',
+    value          => $proxy_cache_valid,
   }
 
   pe_nginx::directive { "${endpoint}-proxy_cache":
-    directive_name   => 'proxy_cache',
-    value            => $proxy_cache,
+    directive_name => 'proxy_cache',
+    value          => $proxy_cache,
   }
 
   pe_nginx::directive { "${endpoint}-proxy_ignore_headers":
-    directive_name   => 'proxy_ignore_headers',
-    value            => $proxy_ignore_headers,
+    directive_name => 'proxy_ignore_headers',
+    value          => $proxy_ignore_headers,
   }
 
   pe_nginx::directive { "${endpoint}-proxy_cache_lock":
-    directive_name   => 'proxy_cache_lock',
-    value            => $proxy_cache_lock,
+    directive_name => 'proxy_cache_lock',
+    value          => $proxy_cache_lock,
   }
 
   pe_nginx::directive { "${endpoint}-add_header":
-    directive_name   => 'add_header',
-    value            => $add_header,
+    directive_name => 'add_header',
+    value          => $add_header,
   }
 }
