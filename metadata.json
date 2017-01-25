@@ -1,6 +1,6 @@
 {
   "name": "npwalker/pe_nginx_cache",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "npwalker",
   "summary": "A Puppet module for configuring caching in pe-nginx",
   "license": "Apache-2.0",
