@@ -2,6 +2,11 @@ define pe_nginx_cache::cache_endpoint (
   String $endpoint             = $title,
   String $proxy_pass           = 'http://127.0.0.1:4430',
   String $proxy_redirect       = 'default',
+  Integer $proxy_read_timeout  = hiera('puppet_enterprise::profile::console::proxy_read_timeout', 200),
+  Array[String] $set_headers   = ['X-SSL-Subject $ssl_client_s_dn',
+                                  'X-Client-DN $ssl_client_s_dn',
+                                  'X-Client-Verify $ssl_client_verify',
+                                  'X-Forwarded-For $proxy_add_x_forwarded_for'],
   String $proxy_cache_valid    = '200 5m',
   String $proxy_cache          = 'my_cache',
   String $proxy_ignore_headers = 'Cache-Control',
@@ -23,6 +28,19 @@ define pe_nginx_cache::cache_endpoint (
   pe_nginx::directive { "${endpoint}-proxy_redirect":
     directive_name => 'proxy_redirect',
     value          => $proxy_redirect,
+  }
+
+  pe_nginx::directive { "${endpoint}-proxy_read_timeout":
+    directive_name => 'proxy_read_timeout',
+    value          => "${proxy_read_timeout}",
+  }
+
+  $set_headers.each | $header | {
+    pe_nginx::directive { "${endpoint}-proxy_set_header-${header}":
+      directive_name => 'proxy_set_header',
+      value          => $header,
+      replace_value  => false,
+    }
   }
 
   pe_nginx::directive { "${endpoint}-proxy_cache_valid":
