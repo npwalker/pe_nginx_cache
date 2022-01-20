@@ -7,9 +7,11 @@ two things.
 
 This configures nginx's cache on disk.
 
-2.  ```pe_nginx_cache::cache_endpoint { '/path/to/endpoint' :
-  proxy_cache_valid => '200 <duration>'
-}```
+2.  ```
+    pe_nginx_cache::cache_endpoint { '/path/to/endpoint' :
+      proxy_cache_valid => '200 <duration>'
+    }
+    ```
 
 This defined type configures multiple settings in nginx that enable caching for
 that endpoint.  You can find an endpoint you want to cache by looking in chrome
